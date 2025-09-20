@@ -13,7 +13,6 @@ import PropTypes from 'prop-types';
 
 import messages from './messages';
 import StudioFooterLogoSlot from '../../plugin-slots/StudioFooterLogoSlot';
-import StudioFooterHelpSectionSlot from '../../plugin-slots/StudioFooterHelpSectionSlot';
 
 ensureConfig([
   'LMS_BASE_URL',
@@ -36,7 +35,6 @@ const StudioFooter = ({
 
   return (
     <>
-      <StudioFooterHelpSectionSlot containerProps={containerProps} />
       <Container
         size="xl"
         className={classNames('px-4', containerClassName)}

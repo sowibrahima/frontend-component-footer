@@ -19,7 +19,7 @@ import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
-ensureConfig(['LMS_BASE_URL', 'LOGO_TRADEMARK_URL'], 'Footer component');
+ensureConfig(['LMS_BASE_URL', 'LOGO_TRADEMARK_URL', 'TERMS_OF_SERVICE_URL', 'PRIVACY_POLICY_URL', 'SUPPORT_EMAIL', 'SITE_NAME'], 'Footer component');
 var EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link'
 };
@@ -58,7 +58,19 @@ var SiteFooter = /*#__PURE__*/function (_React$Component) {
         className: "footer d-flex border-top py-3 px-4"
       }, /*#__PURE__*/React.createElement("div", {
         className: "container-fluid d-flex"
-      }, /*#__PURE__*/React.createElement("a", {
+      }, /*#__PURE__*/React.createElement(ActionRow, {
+        className: "pt-3 m-0 x-small"
+      }, "\xA9 ", new Date().getFullYear(), " ", /*#__PURE__*/React.createElement(Hyperlink, {
+        destination: config.MARKETING_SITE_BASE_URL,
+        target: "_blank",
+        className: "ml-2"
+      }, config.SITE_NAME), /*#__PURE__*/React.createElement(ActionRow.Spacer, null), !isEmpty(config.TERMS_OF_SERVICE_URL) && /*#__PURE__*/React.createElement(Hyperlink, {
+        destination: config.TERMS_OF_SERVICE_URL,
+        "data-testid": "termsOfService"
+      }, intl.formatMessage(messages.termsOfServiceLinkLabel)), !isEmpty(config.PRIVACY_POLICY_URL) && /*#__PURE__*/React.createElement(Hyperlink, {
+        destination: config.PRIVACY_POLICY_URL,
+        "data-testid": "privacyPolicy"
+      }, intl.formatMessage(messages.privacyPolicyLinkLabel))), /*#__PURE__*/React.createElement("a", {
         className: "d-block",
         href: config.LMS_BASE_URL,
         "aria-label": intl.formatMessage(messages['footer.logo.ariaLabel'])

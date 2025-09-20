@@ -11,6 +11,10 @@ import LanguageSelector from './LanguageSelector';
 ensureConfig([
   'LMS_BASE_URL',
   'LOGO_TRADEMARK_URL',
+  'TERMS_OF_SERVICE_URL',
+  'PRIVACY_POLICY_URL',
+  'SUPPORT_EMAIL',
+  'SITE_NAME',
 ], 'Footer component');
 
 const EVENT_NAMES = {
@@ -49,6 +53,19 @@ class SiteFooter extends React.Component {
         className="footer d-flex border-top py-3 px-4"
       >
         <div className="container-fluid d-flex">
+          <ActionRow className="pt-3 m-0 x-small">
+            © {new Date().getFullYear()} <Hyperlink destination={config.MARKETING_SITE_BASE_URL} target="_blank" className="ml-2">{config.SITE_NAME}</Hyperlink>
+            <ActionRow.Spacer />
+            {!isEmpty(config.TERMS_OF_SERVICE_URL) && (
+              <Hyperlink destination={config.TERMS_OF_SERVICE_URL} data-testid="termsOfService">
+                {intl.formatMessage(messages.termsOfServiceLinkLabel)}
+              </Hyperlink>
+            )}{!isEmpty(config.PRIVACY_POLICY_URL) && (
+              <Hyperlink destination={config.PRIVACY_POLICY_URL} data-testid="privacyPolicy">
+                {intl.formatMessage(messages.privacyPolicyLinkLabel)}
+              </Hyperlink>
+            )}
+          </ActionRow>
           <a
             className="d-block"
             href={config.LMS_BASE_URL}

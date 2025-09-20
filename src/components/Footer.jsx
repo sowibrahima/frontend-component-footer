@@ -4,11 +4,16 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
+import {
+  ActionRow,
+  Hyperlink,
+} from '@openedx/paragon';
 
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
 
 ensureConfig([
+  'MARKETING_SITE_BASE_URL',
   'LMS_BASE_URL',
   'LOGO_TRADEMARK_URL',
   'TERMS_OF_SERVICE_URL',
@@ -58,11 +63,11 @@ class SiteFooter extends React.Component {
             <ActionRow.Spacer />
             {!isEmpty(config.TERMS_OF_SERVICE_URL) && (
               <Hyperlink destination={config.TERMS_OF_SERVICE_URL} data-testid="termsOfService">
-                {intl.formatMessage(messages.termsOfServiceLinkLabel)}
+                {intl.formatMessage(messages['footer.legalLinks.termsOfService'])}
               </Hyperlink>
             )}{!isEmpty(config.PRIVACY_POLICY_URL) && (
               <Hyperlink destination={config.PRIVACY_POLICY_URL} data-testid="privacyPolicy">
-                {intl.formatMessage(messages.privacyPolicyLinkLabel)}
+                {intl.formatMessage(messages['footer.legalLinks.privacyPolicy'])}
               </Hyperlink>
             )}
           </ActionRow>

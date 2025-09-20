@@ -17,9 +17,10 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
+import { ActionRow, Hyperlink } from '@openedx/paragon';
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
-ensureConfig(['LMS_BASE_URL', 'LOGO_TRADEMARK_URL', 'TERMS_OF_SERVICE_URL', 'PRIVACY_POLICY_URL', 'SUPPORT_EMAIL', 'SITE_NAME'], 'Footer component');
+ensureConfig(['MARKETING_SITE_BASE_URL', 'LMS_BASE_URL', 'LOGO_TRADEMARK_URL', 'TERMS_OF_SERVICE_URL', 'PRIVACY_POLICY_URL', 'SUPPORT_EMAIL', 'SITE_NAME'], 'Footer component');
 var EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link'
 };
@@ -67,10 +68,10 @@ var SiteFooter = /*#__PURE__*/function (_React$Component) {
       }, config.SITE_NAME), /*#__PURE__*/React.createElement(ActionRow.Spacer, null), !isEmpty(config.TERMS_OF_SERVICE_URL) && /*#__PURE__*/React.createElement(Hyperlink, {
         destination: config.TERMS_OF_SERVICE_URL,
         "data-testid": "termsOfService"
-      }, intl.formatMessage(messages.termsOfServiceLinkLabel)), !isEmpty(config.PRIVACY_POLICY_URL) && /*#__PURE__*/React.createElement(Hyperlink, {
+      }, intl.formatMessage(messages['footer.legalLinks.termsOfService'])), !isEmpty(config.PRIVACY_POLICY_URL) && /*#__PURE__*/React.createElement(Hyperlink, {
         destination: config.PRIVACY_POLICY_URL,
         "data-testid": "privacyPolicy"
-      }, intl.formatMessage(messages.privacyPolicyLinkLabel))), /*#__PURE__*/React.createElement("a", {
+      }, intl.formatMessage(messages['footer.legalLinks.privacyPolicy']))), /*#__PURE__*/React.createElement("a", {
         className: "d-block",
         href: config.LMS_BASE_URL,
         "aria-label": intl.formatMessage(messages['footer.logo.ariaLabel'])
